@@ -1,0 +1,9 @@
+echo "# TagsIndia" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Nishant8081/TagsIndia.git
+git push -u origin main
+
+git remote set-url origin git@github.com:Nishant8081/TagsIndia.git

@@ -1,0 +1,303 @@
+Structured Prompt for Replit: E-Commerce Website for LuxeTags
+Objective
+Create a fully functional, multi-page e-commerce website for selling premium labels, tags, clothing tags, women’s tags, jewelry tags, and RFID tags. The website should use modern technologies (Next.js, TypeScript, Tailwind CSS, Three.js, Barba.js) and feature a classy, old-money aesthetic with a glossy, animated, and luxurious design inspired by websites like Louis Vuitton (https://in.louisvuitton.com), Gucci (https://www.gucci.com), Prada (https://www.prada.com), Apple (https://www.apple.com/in/store), Alibaba (https://www.alibaba.com), and Shopify (https://www.shopify.com/in). The site should be responsive, feature-rich, and optimized for Replit’s environment.
+Project Requirements
+Technologies
+
+Framework: Next.js (v14 or latest stable version) for server-side rendering and static site generation.
+Language: TypeScript for type safety and scalability.
+Styling: Tailwind CSS for responsive, customizable styling.
+3D Visuals: Three.js for interactive 3D product displays (e.g., rotating tags or jewelry).
+Page Transitions: Barba.js for smooth, animated page transitions.
+Environment: Ensure compatibility with Replit’s Node.js environment and deployment capabilities.
+
+Design
+
+Color Palette: Old-money aesthetic with colors like deep green (#1A3C34), burgundy (#4A2F2F), gold (#D4A017), cream (#F5E8C7), navy (#1B263B).
+Aesthetic: Glossy, classic, luxurious, with smooth animations, micro-interactions, and a premium feel.
+Typography: Use serif fonts (e.g., Playfair Display) for headings and sans-serif (e.g., Montserrat) for body text.
+Responsiveness: Fully responsive for mobile, tablet, and desktop.
+
+Pages
+
+Home Page:
+Hero section with a full-screen background gradient, animated headline, and a "Shop Now" CTA.
+Featured products section with product cards (image, name, price, category).
+Animated scroll effects and hover interactions.
+
+
+Products Page:
+Grid of product cards with filtering (by category: Clothing Tags, Jewelry Tags, RFID Tags, etc.) and sorting (by price, popularity).
+Search bar for product search.
+Pagination or infinite scroll for product listing.
+
+
+Product Detail Page:
+Dynamic page for each product (use Next.js dynamic routes: /products/[id]).
+3D product visualization using Three.js (e.g., rotating tag or jewelry model).
+Product details (name, description, price, category, add-to-cart button).
+Related products section.
+
+
+About Page:
+Brand story with a timeline of milestones, animated with scroll-triggered effects.
+Team section with placeholder images and bios.
+
+
+Contact Page:
+Contact form (name, email, message) with validation.
+Embedded map (use a static map image or Google Maps iframe if Replit supports).
+
+
+Cart Page:
+Display items in the cart with quantity controls and total price.
+Remove item functionality.
+
+
+Checkout Page:
+Form for shipping and payment details (placeholder for payment gateway like Stripe).
+Order summary and confirmation button.
+
+
+
+Features
+
+Navigation: Sticky header with links to Home, Products, About, Contact, Cart, and a search icon.
+Animations:
+Smooth page transitions using Barba.js (e.g., fade or slide effects).
+Hover effects on buttons and product cards (e.g., scale, shadow, color change).
+Scroll-triggered animations (e.g., fade-in sections) using libraries like Framer Motion or CSS.
+
+
+Product Filtering: Filter products by category, price range, and tags.
+3D Visuals: Use Three.js to create interactive 3D models for select products (e.g., a rotating jewelry tag).
+Cart Functionality: Client-side cart management with localStorage or a simple state management solution (e.g., Zustand).
+SEO: Implement Next.js Head component for meta tags and SEO optimization.
+Accessibility: Ensure ARIA labels, keyboard navigation, and semantic HTML.
+
+Project Structure
+luxe-tags/
+├── components/
+│   ├── Layout.tsx          # Navigation and layout wrapper
+│   ├── ProductCard.tsx     # Reusable product card component
+│   ├── ThreeCanvas.tsx     # Three.js canvas for 3D visuals
+├── lib/
+│   ├── threeSetup.ts       # Three.js setup for 3D models
+│   ├── barbaSetup.ts       # Barba.js setup for page transitions
+├── pages/
+│   ├── index.tsx           # Home page
+│   ├── products/
+│   │   ├── index.tsx       # Products listing page
+│   │   ├── [id].tsx        # Product detail page
+│   ├── about.tsx           # About page
+│   ├── contact.tsx         # Contact page
+│   ├── cart.tsx            # Cart page
+│   ├── checkout.tsx        # Checkout page
+├── public/
+│   ├── models/             # 3D model files (e.g., .glb for Three.js)
+│   ├── images/             # Static images for products, hero, etc.
+├── styles/
+│   ├── globals.css         # Global styles and Tailwind imports
+├── tailwind.config.js      # Tailwind configuration
+├── package.json            # Dependencies and scripts
+├── tsconfig.json           # TypeScript configuration
+
+Dependencies
+Include the following in package.json:
+{
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest",
+    "@types/react": "latest",
+    "@types/node": "latest",
+    "tailwindcss": "latest",
+    "three": "latest",
+    "@barba/core": "latest",
+    "@barba/prefetch": "latest",
+    "framer-motion": "latest",
+    "zustand": "latest"
+  },
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "postcss": "latest",
+    "@types/three": "latest"
+  }
+}
+
+Tailwind Configuration
+Configure tailwind.config.js with the old-money color palette:
+module.exports = {
+  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        green: '#1A3C34',
+        burgundy: '#4A2F2F',
+        gold: '#D4A017',
+        cream: '#F5E8C7',
+        navy: '#1B263B',
+      },
+      fontFamily: {
+        serif: ['Playfair Display', 'serif'],
+        sans: ['Montserrat', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+};
+
+Setup Instructions
+
+Create Project: In Replit, create a new Node.js repl and set up a Next.js project using npx create-next-app@latest --ts.
+Install Dependencies: Run npm install with the listed dependencies.
+Configure Tailwind: Initialize Tailwind CSS with npx tailwindcss init -p and update tailwind.config.js as shown.
+Add Fonts: Include Google Fonts (Playfair Display, Montserrat) in pages/_document.tsx or via CDN in pages/_app.tsx.
+3D Models: Place sample .glb files in public/models/ for Three.js (use placeholder models or generate simple ones).
+Run Project: Use npm run dev to start the development server in Replit.
+Deploy: Use Replit’s deployment feature to host the site, ensuring environment variables are set for production.
+
+Implementation Steps
+
+Home Page:
+Create a hero section with a gradient background (from-green to-burgundy), animated headline using Framer Motion, and a CTA button.
+Add a featured products section with 3-6 product cards linking to the Products page.
+
+
+Products Page:
+Fetch mock product data (e.g., JSON array in lib/products.ts) with fields: id, name, price, category, image.
+Implement filtering by category and price using Zustand for state management.
+Use Tailwind for a responsive product grid.
+
+
+Product Detail Page:
+Use Next.js dynamic routes ([id].tsx) to display product details.
+Integrate Three.js in a ThreeCanvas component to render a 3D model (e.g., a rotating tag).
+
+
+Page Transitions:
+Initialize Barba.js in lib/barbaSetup.ts with a fade transition (opacity 0 to 1).
+Apply to all page links using the data-barba attribute.
+
+
+Navigation:
+Create a Layout.tsx component with a sticky header containing navigation links.
+Add a cart icon with a badge showing the number of items (use Zustand).
+
+
+Animations:
+Use Framer Motion for scroll-triggered animations (e.g., fade-in for sections).
+Apply hover effects (scale, shadow) to buttons and product cards.
+
+
+Cart & Checkout:
+Implement client-side cart management with Zustand and localStorage.
+Create a checkout form with validation (use React Hook Form if needed).
+
+
+
+Sample Code Snippets
+Home Page (pages/index.tsx)
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { initBarba } from '../lib/barbaSetup';
+
+const Home: NextPage = () => {
+  useEffect(() => {
+    initBarba();
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-cream text-navy" data-barba="container">
+      <Head>
+        <title>LuxeTags - Premium Labels & Tags</title>
+        <meta name="description" content="Premium labels, tags, and RFID solutions for fashion and luxury." />
+      </Head>
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="h-screen flex items-center justify-center bg-gradient-to-br from-green to-burgundy"
+      >
+        <div className="text-center">
+          <motion.h1
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-6xl font-serif text-gold"
+          >
+            LuxeTags
+          </motion.h1>
+          <p className="text-2xl mt-4 text-cream">Elevate Your Brand with Premium Labels & Tags</p>
+          <Link href="/products">
+            <a className="mt-8 inline-block px-8 py-4 bg-navy text-cream rounded-full hover:bg-gold hover:text-navy transition-all duration-300">
+              Shop Now
+            </a>
+          </Link>
+        </div>
+      </motion.section>
+    </div>
+  );
+};
+
+export default Home;
+
+Barba.js Setup (lib/barbaSetup.ts)
+import barba from '@barba/core';
+import barbaPrefetch from '@barba/prefetch';
+
+export const initBarba = () => {
+  barba.use(barbaPrefetch);
+  barba.init({
+    transitions: [
+      {
+        name: 'fade',
+        leave({ current }) {
+          return new Promise((resolve) => {
+            current.container.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300 }).onfinish = resolve;
+          });
+        },
+        enter({ next }) {
+          return new Promise((resolve) => {
+            next.container.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300 }).onfinish = resolve;
+          });
+        },
+      },
+    ],
+  });
+};
+
+Tailwind CSS (styles/globals.css)
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-cream text-navy font-sans;
+}
+
+Notes for Replit
+
+3D Models: Due to Replit’s file system limitations, use simple .glb models or generate procedural 3D shapes in Three.js (e.g., cubes or spheres for placeholders).
+Deployment: Ensure Replit’s port (usually 3000) is open and configure package.json scripts for production builds (next build && next start).
+Performance: Optimize Three.js renders by limiting polygon counts and using lightweight textures.
+Testing: Test animations and transitions in Replit’s preview window, ensuring responsiveness across devices.
+
+Deliverables
+
+A complete Next.js project with the specified structure and pages.
+Fully styled UI with Tailwind CSS and the old-money palette.
+Functional product filtering, cart, and 3D visuals.
+Smooth page transitions with Barba.js.
+Deployable on Replit with a public URL.
+
+Next Steps
+
+Copy this prompt into Replit’s documentation or a new .md file for reference.
+Run npx create-next-app@latest --ts luxe-tags in Replit’s terminal.
+Follow the setup instructions to install dependencies and configure the project.
+Implement the pages and features as outlined, testing frequently in Replit’s preview.
